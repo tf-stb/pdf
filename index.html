@@ -102,6 +102,8 @@
       crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
     <script>
+      const timestamp = Date.now(); // Returns the current timestamp in milliseconds
+
       const dropzone = document.getElementById("dropzone");
       const fileInput = document.getElementById("pdfFiles");
       const fileCounter = document.getElementById("fileCounter");
@@ -156,22 +158,11 @@
         const blob = new Blob([mergedPdfBytes], { type: "application/pdf" });
         const link = document.createElement("a");
         link.href = URL.createObjectURL(blob);
-        link.download = getFormattedDateTime() + ".pdf";
+        link.download = "STEF_" + timestamp + ".pdf";
 
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-      }
-
-      function getFormattedDateTime() {
-        const now = new Date();
-        const day = now.getDate().toString().padStart(2, "0");
-        const month = (now.getMonth() + 1).toString().padStart(2, "0");
-        const year = now.getFullYear();
-        const hours = now.getHours().toString().padStart(2, "0");
-        const minutes = now.getMinutes().toString().padStart(2, "0");
-
-        return `STEF_${day}${month}${year}${hours}${minutes}`;
       }
     </script>
   </body>
