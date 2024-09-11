@@ -83,7 +83,7 @@
       }
       .preview-grid {
         display: grid;
-        grid-template-columns: repeat(9, 1fr);
+        grid-template-columns: repeat(6, 1fr);
         gap: 10px;
       }
       .preview-item {
@@ -202,7 +202,7 @@
           const page = await pdfjsDoc.getPage(i + 1);
           const canvas = document.createElement('canvas');
           const context = canvas.getContext('2d');
-          const viewport = page.getViewport({ scale: 0.3 });
+          const viewport = page.getViewport({ scale: 0.5 });
           canvas.height = viewport.height;
           canvas.width = viewport.width;
 
